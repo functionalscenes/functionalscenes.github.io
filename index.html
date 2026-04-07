@@ -1,24 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon</title>
-    <style>
-        body {
-            margin: 0;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #0d1117;
-            color: #e6edf3;
-        }
-        h1 { font-size: 2rem; font-weight: 400; }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="FunREC: Reconstructing Functional 3D Scenes from Egocentric Interaction Videos">
+  <meta name="description" content="FunREC reconstructs functional 3D digital twins of indoor scenes from egocentric RGB-D interaction videos, recovering interactable articulated objects with simulation-compatible meshes.">
+  <meta name="keywords" content="3D reconstruction, articulated objects, egocentric video, digital twins, scene understanding, computer vision">
+  <meta name="author" content="Alexandros Delitzas, Chenyangguang Zhang, Alexey Gavryushin, Tommaso Di Mario, Boyang Sun, Rishabh Dabral, Leonidas Guibas, Christian Theobalt, Marc Pollefeys, Francis Engelmann, Daniel Barath">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="FunREC">
+  <meta property="og:title" content="FunREC: Reconstructing Functional 3D Scenes from Egocentric Interaction Videos">
+  <meta property="og:description" content="FunREC reconstructs functional 3D digital twins of indoor scenes from egocentric RGB-D interaction videos, recovering interactable articulated objects with simulation-compatible meshes.">
+  <meta property="og:url" content="https://functionalscenes.github.io">
+  <meta property="og:image" content="https://functionalscenes.github.io/static/images/social_preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="FunREC - Reconstructing Functional 3D Scenes">
+  <meta property="article:published_time" content="2026-01-01T00:00:00.000Z">
+  <meta property="article:author" content="Alexandros Delitzas">
+  <meta property="article:section" content="Research">
+  <meta property="article:tag" content="3D Reconstruction">
+  <meta property="article:tag" content="Articulated Objects">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FunREC: Reconstructing Functional 3D Scenes from Egocentric Interaction Videos">
+  <meta name="twitter:description" content="FunREC reconstructs functional 3D digital twins of indoor scenes from egocentric RGB-D interaction videos, recovering interactable articulated objects with simulation-compatible meshes.">
+  <meta name="twitter:image" content="https://functionalscenes.github.io/static/images/social_preview.png">
+  <meta name="twitter:image:alt" content="FunREC - Reconstructing Functional 3D Scenes">
+
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="FunREC: Reconstructing Functional 3D Scenes from Egocentric Interaction Videos">
+  <meta name="citation_author" content="Delitzas, Alexandros">
+  <meta name="citation_author" content="Zhang, Chenyangguang">
+  <meta name="citation_author" content="Gavryushin, Alexey">
+  <meta name="citation_author" content="Di Mario, Tommaso">
+  <meta name="citation_author" content="Sun, Boyang">
+  <meta name="citation_author" content="Dabral, Rishabh">
+  <meta name="citation_author" content="Guibas, Leonidas">
+  <meta name="citation_author" content="Theobalt, Christian">
+  <meta name="citation_author" content="Pollefeys, Marc">
+  <meta name="citation_author" content="Engelmann, Francis">
+  <meta name="citation_author" content="Barath, Daniel">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_conference_title" content="CVPR 2026">
+
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+  <title>FunREC: Reconstructing Functional 3D Scenes from Egocentric Interaction Videos</title>
+
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="apple-touch-icon" href="static/images/favicon.ico">
+
+  <!-- Critical CSS - Load synchronously -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <!-- Non-critical CSS - Load asynchronously -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+  <!-- Fallback for browsers that don't support preload -->
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+
+  <!-- Fonts - Optimized loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Defer non-critical JavaScript -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+
+  <!-- Structured Data for Academic Papers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "FunREC: Reconstructing Functional 3D Scenes from Egocentric Interaction Videos",
+    "description": "FunREC reconstructs functional 3D digital twins of indoor scenes from egocentric RGB-D interaction videos, recovering interactable articulated objects with simulation-compatible meshes.",
+    "author": [
+      {"@type": "Person", "name": "Alexandros Delitzas", "affiliation": [{"@type": "Organization", "name": "ETH Zurich"}, {"@type": "Organization", "name": "Max Planck Institute for Informatics"}]},
+      {"@type": "Person", "name": "Chenyangguang Zhang", "affiliation": {"@type": "Organization", "name": "ETH Zurich"}},
+      {"@type": "Person", "name": "Alexey Gavryushin", "affiliation": {"@type": "Organization", "name": "ETH Zurich"}},
+      {"@type": "Person", "name": "Tommaso Di Mario", "affiliation": {"@type": "Organization", "name": "ETH Zurich"}},
+      {"@type": "Person", "name": "Boyang Sun", "affiliation": {"@type": "Organization", "name": "ETH Zurich"}},
+      {"@type": "Person", "name": "Rishabh Dabral", "affiliation": {"@type": "Organization", "name": "Max Planck Institute for Informatics"}},
+      {"@type": "Person", "name": "Leonidas Guibas", "affiliation": {"@type": "Organization", "name": "Stanford University"}},
+      {"@type": "Person", "name": "Christian Theobalt", "affiliation": {"@type": "Organization", "name": "Max Planck Institute for Informatics"}},
+      {"@type": "Person", "name": "Marc Pollefeys", "affiliation": [{"@type": "Organization", "name": "ETH Zurich"}, {"@type": "Organization", "name": "Microsoft"}]},
+      {"@type": "Person", "name": "Francis Engelmann", "affiliation": [{"@type": "Organization", "name": "Stanford University"}, {"@type": "Organization", "name": "USI Lugano"}]},
+      {"@type": "Person", "name": "Daniel Barath", "affiliation": {"@type": "Organization", "name": "ETH Zurich"}}
+    ],
+    "datePublished": "2026",
+    "publisher": {
+      "@type": "Organization",
+      "name": "CVPR 2026"
+    },
+    "url": "https://functionalscenes.github.io",
+    "keywords": ["3D reconstruction", "articulated objects", "egocentric video", "digital twins", "scene understanding", "computer vision"],
+    "isAccessibleForFree": true
+  }
+  </script>
 </head>
 <body>
-    <h1>Coming Soon</h1>
-</body>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <main id="main-content">
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">
+              <span class="publication-title-text">FunREC</span>
+            </h1>
+            <h2 class="subtitle is-3 publication-subtitle">Reconstructing Functional 3D Scenes from Egocentric Interaction Videos</h2>
+            <div class="is-size-5 publication-authors">
+              <!-- Row 1 -->
+              <span class="author-block">
+                <a href="https://alexdelitzas.github.io" target="_blank">Alexandros Delitzas</a><sup>1,2</sup>,</span>
+              <span class="author-block">
+                <a href="https://zhangcyg.github.io/" target="_blank">Chenyangguang Zhang</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=BjEdv_AAAAAJ" target="_blank">Alexey Gavryushin</a><sup>1</sup>,</span>
+              <br>
+              <!-- Row 2 -->
+              <span class="author-block">
+                <a href="https://github.com/tommdim" target="_blank">Tommaso Di Mario</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://boysun045.github.io/boysun-website/" target="_blank">Boyang Sun</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://rishabhdabral.github.io/" target="_blank">Rishabh Dabral</a><sup>2</sup>,</span>
+              <span class="author-block">
+                <a href="https://profiles.stanford.edu/leonidas-guibas" target="_blank">Leonidas Guibas</a><sup>3</sup>,</span>
+              <br>
+              <!-- Row 3 -->
+              <span class="author-block">
+                <a href="https://people.mpi-inf.mpg.de/~theobalt/" target="_blank">Christian Theobalt</a><sup>2</sup>,</span>
+              <span class="author-block">
+                <a href="https://people.inf.ethz.ch/marc.pollefeys/" target="_blank">Marc Pollefeys</a><sup>1,4</sup>,</span>
+              <span class="author-block">
+                <a href="https://francisengelmann.github.io" target="_blank">Francis Engelmann</a><sup>3,5</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=U9-D8DYAAAAJ" target="_blank">Daniel Barath</a><sup>1</sup></span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup><span style="color: #1F407A;">ETH Zurich</span></span>&nbsp;&nbsp;&nbsp;
+              <span class="author-block"><sup>2</sup><span style="color: #006C66;">Max Planck Institute for Informatics</span></span>&nbsp;&nbsp;&nbsp;
+              <span class="author-block"><sup>3</sup><span style="color: #8C1515;">Stanford University</span></span>&nbsp;&nbsp;&nbsp;
+              <span class="author-block"><sup>4</sup><span style="color: #737373;">Microsoft</span></span>&nbsp;&nbsp;&nbsp;
+              <span class="author-block"><sup>5</sup><span style="color: #000000;">USI Lugano</span></span>
+            </div>
+
+            <div class="is-size-4 publication-authors mt-3">
+              <span class="author-block"><b>CVPR 2026</b></span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- Paper PDF Link -->
+                <span class="link-block">
+                  <a href="#" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+
+                <!-- Code Link -->
+                <span class="link-block">
+                  <a href="javascript:void(0)" class="external-link button is-normal is-rounded is-dark is-coming-soon">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+                <!-- arXiv Link -->
+                <span class="link-block">
+                  <a href="#" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Paper abstract -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              We present FunREC, a method for reconstructing functional 3D digital twins of indoor scenes directly from egocentric RGB-D interaction videos. Unlike existing methods on articulated reconstruction, which rely on controlled setups, multi-state captures, or CAD priors, FunREC operates directly on in-the-wild human interaction sequences to recover interactable 3D scenes. It automatically discovers articulated parts, estimates their kinematic parameters, tracks their 3D motion, and reconstructs static and moving geometry in canonical space, yielding simulation-compatible meshes. Across new real and simulated benchmarks, FunREC surpasses prior work by a large margin, achieving up to +50 mIoU improvement in part segmentation, 5-10&times; lower articulation and pose errors, and significantly higher reconstruction accuracy. We further demonstrate applications on URDF/USD export for simulation, hand-guided affordance mapping and robot-scene interaction.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End paper abstract -->
+
+
+  <!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title">BibTeX</h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      <pre id="bibtex-code"><code>@inproceedings{delitzas2026funrec,
+  title={Reconstructing Functional 3D Scenes from Egocentric Interaction Videos},
+  author={Delitzas, Alexandros and Zhang, Chenyangguang and Gavryushin, Alexey and Di Mario, Tommaso and Sun, Boyang and Dabral, Rishabh and Guibas, Leonidas and Theobalt, Christian and Pollefeys, Marc and Engelmann, Francis and Barath, Daniel},
+  booktitle={IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year={2026}
+}</code></pre>
+    </div>
+  </section>
+  <!--End BibTex citation -->
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </footer>
+
+  </main>
+  </body>
 </html>
