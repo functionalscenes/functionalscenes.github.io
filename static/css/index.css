@@ -749,5 +749,43 @@ a:focus {
   }
 }
 
+/* Coming Soon Button State */
+.button.is-coming-soon {
+  opacity: 0.6 !important;
+  filter: grayscale(0.8);
+  cursor: not-allowed !important;
+  position: relative !important;
+  pointer-events: auto !important;
+}
 
+.button.is-coming-soon:hover {
+  transform: none !important;
+  box-shadow: var(--shadow-md) !important;
+  background: var(--text-primary) !important;
+}
+
+.button.is-coming-soon::after {
+  content: "Coming Soon";
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(30, 41, 59, 0.9);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0;
+  transition: all 0.2s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.button.is-coming-soon:hover::after {
+  opacity: 1;
+  bottom: -25px;
+}
 
