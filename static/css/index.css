@@ -749,6 +749,47 @@ a:focus {
   }
 }
 
+/* FunREC Logo */
+.funrec-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+}
+
+.funrec-fun {
+  font-weight: 800;
+  color: #1a1a1a;
+}
+
+.funrec-rec-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15em;
+  border: 3px solid #1a1a1a;
+  border-radius: 10px;
+  padding: 0.05em 0.25em;
+  margin-left: 0.1em;
+}
+
+.funrec-rec-text {
+  font-weight: 600 !important;
+  color: #e53e2e;
+}
+
+.funrec-dot {
+  display: inline-block;
+  width: 0.7em;
+  height: 0.7em;
+  background: #e53e2e;
+  border-radius: 50%;
+  animation: funrec-blink 1.5s ease-in-out infinite;
+}
+
+@keyframes funrec-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
 /* Teaser Caption Box */
 .teaser-caption {
   background: #f8fafc;
