@@ -264,13 +264,43 @@
   <section class="hero is-small">
     <div class="hero-body">
       <div class="container is-max-desktop">
-        <h2 class="title is-3 has-text-centered">Video</h2>
-        <div class="columns is-centered has-text-centered">
+        <h2 class="title is-3 has-text-centered">Video Results</h2>
+        <div class="content has-text-justified">
+          <p>
+            Given an egocentric RGB-D interaction video, FunREC reconstructs a <b>temporally grounded functional 3D digital twin</b> of the environment, including static scene geometry and articulated parts along with their estimated kinematic parameters and per-timestep poses. The resulting digital twin can be directly used for downstream applications such as interactive manipulation and physical simulation.
+          </p>
+        </div>
+        <div class="columns is-centered">
           <div class="column is-four-fifths">
-            <div class="publication-video">
-              <!-- TODO: Replace with actual YouTube video ID -->
-              <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-            </div>
+            <video autoplay controls muted loop playsinline width="100%" preload="metadata">
+              <source src="static/videos/funrec_video.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <h3 class="title is-4 has-text-centered mt-6">Interactive Scene State Manipulation</h3>
+        <div class="content has-text-justified">
+          <p>
+            The reconstructed digital twins are fully interactable: articulated parts can be manipulated by adjusting their joint parameters, allowing exploration of different scene configurations.
+          </p>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <video autoplay controls muted loop playsinline width="100%" preload="metadata">
+              <source src="static/videos/interactive_manipulation.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        <h3 class="title is-4 has-text-centered mt-6">Physical Simulation in Isaac Sim</h3>
+        <div class="content has-text-justified">
+          <p>
+            Using the reconstructed functional 3D models, we can export simulation-ready files (URDF/USD) that can be directly loaded into physics engines. Here we show a mobile manipulator interacting with a scene reconstructed from real-world scans in NVIDIA Isaac Sim.
+          </p>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <video autoplay controls muted loop playsinline width="100%" preload="metadata">
+              <source src="static/videos/simulation_isaac_sim.mp4" type="video/mp4">
+            </video>
           </div>
         </div>
       </div>
@@ -286,10 +316,24 @@
           <h2 class="title is-3">Datasets</h2>
           <div class="content has-text-justified">
             <p>
-              We introduce two new egocentric datasets with realistic, diverse interactions in real and simulated scenes.
+              We introduce two new egocentric 4D datasets with realistic, diverse interactions in real and simulated scenes.
             </p>
           </div>
           <img src="static/images/dataset.jpg" alt="RealFun4D and OmniFun4D datasets" width="100%">
+          <div class="columns is-centered mt-4">
+            <div class="column is-half">
+              <h3 class="title is-5 has-text-centered">RealFun4D</h3>
+              <video autoplay controls muted loop playsinline width="100%" preload="metadata">
+                <source src="static/videos/realfun4d_dataset.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="column is-half">
+              <h3 class="title is-5 has-text-centered">OmniFun4D</h3>
+              <video autoplay controls muted loop playsinline width="100%" preload="metadata">
+                <source src="static/videos/omnifun4d_dataset.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
           <div class="teaser-caption mt-4">
             <p>
               <b>RealFun4D</b> <i>(left)</i> contains 351 in-the-wild human-scene interactions recorded across 60 real-world apartments in four countries, captured with a head-mounted Azure Kinect DK. It provides RGB video, depth, camera poses, hand masks, part masks, part poses, articulation parameters, text descriptions, interaction intervals, and full 3D static and part reconstructions.
@@ -303,6 +347,35 @@
     </div>
   </section>
   <!-- End datasets -->
+
+  <!-- Robot-Scene Interaction -->
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Robot-Scene Interaction</h2>
+        <div class="content has-text-justified">
+          <p>
+            The functional scene model can be directly transferred to a mobile manipulator, enabling robot-scene interaction from human demonstrations. Given the inferred contact points, articulation parameters, and interaction trajectories, a Boston Dynamics Spot with Arm can reproduce the same interactions.
+          </p>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <div style="overflow: hidden; max-height: 400px;">
+              <video autoplay controls muted loop playsinline width="100%" style="margin-top: -12%; margin-bottom: -12%;" preload="metadata">
+                <source src="static/videos/robot-scene-interaction.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+        <div class="teaser-caption mt-4">
+          <p>
+            <b>From human demonstration to robot execution.</b> <i>Left:</i> A human demonstrates opening an articulated part (e.g., cabinet drawer or door). <i>Right:</i> The robot leverages the information from the functional scene model to reliably reproduce the same interaction.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Robot-Scene Interaction -->
 
   <!--BibTex citation -->
   <section class="section" id="BibTeX">
